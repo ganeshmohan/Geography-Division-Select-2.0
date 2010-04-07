@@ -144,57 +144,6 @@ output.should have_tag("option[value=?]","Nepal")
       output.should have_tag("option[value=?]","Karnataka") 
     end
 
-
-
-
-
-it "should Display all the countries in the Asia and Europe Region" do
-      output = geography_division_select("geography" ,"geography", :drilldown=>"country",:only=>{:region=>"Asia,Europe"})
-      output.should have_tag('select') do
-      with_tag('option', 99)
-      end
-      output.should_not have_tag("option[value=?]","Australia") 
-      output.should have_tag("option[value=?]","Sri Lanka") 
-    end
-
-
-
-it "test State Drilldown using Country in Only and State in Exclude Conditions" do
-      output = geography_division_select("geography" ,"geography",:drilldown=>"state",:only=>{:country=>"India"},:exclude=>{:state=>"Karnataka,Himachal Pradesh"})
-      output.should have_tag('select') do
-      with_tag('option', 33)
-      end
-      output.should_not have_tag("option[value=?]","Karnataka") 
-      output.should have_tag("option[value=?]","Andhra Pradesh") 
-    end
-
-it "test State Drilldown using Country in Exclude and State in Only Conditions" do
-      output =  geography_division_select("geography" ,"geography",:drilldown=>"state",:exclude=>{:country=>"India"},:only=>{:state=>"Karnataka,Himachal Pradesh"})
-      output.should have_tag('select') do
-      with_tag('option', 2)
-      end
-      output.should have_tag("option[value=?]","Karnataka") 
-      output.should_not have_tag("option[value=?]","Andhra Pradesh") 
-    end
-
-it "test State Drilldown using Country in Only conditions" do
-      output =  geography_division_select("geography" ,"geography",:drilldown=>"state",:only=>{:country=>"India"})
-      output.should have_tag('select') do
-      with_tag('option', 35)
-      end
-      output.should_not have_tag("option[value=?]","New Jersey") 
-      output.should have_tag("option[value=?]","Andhra Pradesh") 
-    end
-
-it "test State Drilldown using Country in Only conditions" do
-      output =  geography_division_select("geography" ,"geography",:drilldown=>"state",:only=>{:country=>"India,United Kingdom"}) 
-      output.should have_tag('select') do
-      with_tag('option', 197)
-      end
-output.should_not have_tag("option[value=?]","New Jersey") 
-      output.should have_tag("option[value=?]","Andhra Pradesh") 
-    end
-
   end 
   
   
@@ -253,5 +202,59 @@ it "test State Drilldown using Country in Only conditions and Selected" do
       end
     end
 
-  end  
+
+
+
+
+it "should Display all the countries in the Asia and Europe Region" do
+      output = geography_division_select("geography" ,"geography", :drilldown=>"country",:only=>{:region=>"Asia,Europe"})
+      output.should have_tag('select') do
+      with_tag('option', 99)
+      end
+      output.should_not have_tag("option[value=?]","Australia") 
+      output.should have_tag("option[value=?]","Sri Lanka") 
+    end
+
+
+
+it "test State Drilldown using Country in Only and State in Exclude Conditions" do
+      output = geography_division_select("geography" ,"geography",:drilldown=>"state",:only=>{:country=>"India"},:exclude=>{:state=>"Karnataka,Himachal Pradesh"})
+      output.should have_tag('select') do
+      with_tag('option', 33)
+      end
+      output.should_not have_tag("option[value=?]","Karnataka") 
+      output.should have_tag("option[value=?]","Andhra Pradesh") 
+    end
+
+it "test State Drilldown using Country in Exclude and State in Only Conditions" do
+      output =  geography_division_select("geography" ,"geography",:drilldown=>"state",:exclude=>{:country=>"India"},:only=>{:state=>"Karnataka,Himachal Pradesh"})
+      output.should have_tag('select') do
+      with_tag('option', 2)
+      end
+      output.should have_tag("option[value=?]","Karnataka") 
+      output.should_not have_tag("option[value=?]","Andhra Pradesh") 
+    end
+
+it "test State Drilldown using Country in Only conditions" do
+      output =  geography_division_select("geography" ,"geography",:drilldown=>"state",:only=>{:country=>"India"})
+      output.should have_tag('select') do
+      with_tag('option', 35)
+      end
+      output.should_not have_tag("option[value=?]","New Jersey") 
+      output.should have_tag("option[value=?]","Andhra Pradesh") 
+    end
+
+it "test State Drilldown using Country in Only conditions" do
+      output =  geography_division_select("geography" ,"geography",:drilldown=>"state",:only=>{:country=>"India,United Kingdom"}) 
+      output.should have_tag('select') do
+      with_tag('option', 197)
+      end
+output.should_not have_tag("option[value=?]","New Jersey") 
+      output.should have_tag("option[value=?]","Andhra Pradesh") 
+    end
+
+
+
+  end
+  
  end
